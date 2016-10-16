@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.list a {
+    font-size: 20px;
+    color: black;
+    max-width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 12px 0;
+    text-decoration: none;
+}
