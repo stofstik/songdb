@@ -1,7 +1,23 @@
-<h1><%= @artist.name %>:</h1>
+<div>
+    <%= image_tag(@artist.photo_url) %>
+    <h1><%= @artist.name %>:</h1>
+</div>
 
-<div class="list">
+<div id="song-list" class="list">
     <% @songs.each do |song| %>
-        <%= link_to(song.name, song_path(song.id)) %>
+        <div id=<%= "song-#{song.id}" %> class="list-item">
+            <%= song.name %>
+            <button type="button" <%= "onClick=deleteSong(#{song.id})" %> >Delete</button>
+        </div>
     <% end %>
 </div>
+
+<div>
+    <button type="button" onClick="deleteAll()">Delete all</button>
+</div>
+
+<%= form_for Song.new do |f| %>
+    <%= f.text_field :name, placeholder: "Song name" %>
+    <%= f.hidden_field :artist_id, value: @artist.id %>
+<% end %>
+
