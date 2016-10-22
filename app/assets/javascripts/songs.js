@@ -30,8 +30,6 @@ function addSong() {
         })
         .fail(function(error) {
             console.log(error);
-            // error_message = error.responseJSON.title[0];
-            // showError(error_message);
         });
 }
 
@@ -42,7 +40,6 @@ function deleteSong(songId) {
         contentType: "application/json",
         dataType: "json"
     })
-
     .done(function(data) {
         $('#song-' + songId).remove();
     });
