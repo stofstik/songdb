@@ -45,6 +45,15 @@ function deleteSong(songId) {
     });
 }
 
+function deleteAll() {
+    event.preventDefault();
+    $.each($(".list-item"), function(index, listItem) {
+      console.log(listItem);
+      var id = $(listItem).attr('id');
+      deleteSong(id.substring(id.indexOf('-') + 1, id.length));
+    });
+}
+
 $(document).ready(function() {
     $("form").bind('submit', addSong);
 });
