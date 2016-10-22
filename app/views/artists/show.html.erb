@@ -3,7 +3,7 @@
     <h1><%= @artist.name %>:</h1>
 </div>
 
-<div class="list">
+<div id="song-list" class="list">
     <% @songs.each do |song| %>
         <div id=<%= "song-#{song.id}" %> class="list-item">
             <%= song.name %>

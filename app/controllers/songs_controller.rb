@@ -8,10 +8,8 @@ class SongsController < ApplicationController
     @song = Song.new(song_params)
     respond_to do |format|
       if @song.save
-        format.html { redirect_to Artist.find(song_params[:artist_id]) }
-        format.json { render :show, status: :created, location: @song }
+        format.json { render json: @song }
       else
-        format.html { redirect_to artist_path }
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
