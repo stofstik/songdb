@@ -1,7 +1,11 @@
 <h1>Artists:</h1>
-
+<%= link_to('Name', :order_by => 'name') %>
+<%= link_to('Date Created', :order_by => 'created_at') %>
 <div class="list">
     <% @artists.each do |artist| %>
-        <%= link_to(artist.name, artist_path(artist.id)) %>
+        <div class="list-item">
+            <%= image_tag("http://placehold.it/50x50") %>
+            <%= link_to(artist.name, artist_path(artist.id)) %>
+        </div>
     <% end %>
 </div>
