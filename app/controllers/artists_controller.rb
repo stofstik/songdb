@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+  before_action :set_artist, only: [:show, :update]
 
   def index
     if params[:order_by] == 'created_at'
@@ -11,14 +12,12 @@ class ArtistsController < ApplicationController
   end
 
   def show
-    @artist = Artist.find(params[:id])
     @songs = @artist.songs
   end
 
   private
-
-  def order_params
-    require(:order_by).permit(:created_at, :name)
-  end
+    def set_artist
+      @artist = Artist.find(params[:id])
+    end
 
 end
