@@ -4,7 +4,7 @@
 <div class="list">
     <% @artists.each do |artist| %>
         <div class="list-item">
-            <%= image_tag("http://placehold.it/50x50") %>
+            <%= image_tag(artist.photo.image) %>
             <%= link_to(artist.name, artist_path(artist.id)) %>
         </div>
     <% end %>

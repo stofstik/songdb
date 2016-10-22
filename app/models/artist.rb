@@ -1,5 +1,6 @@
 class Artist < ApplicationRecord
   has_many :songs, dependent: :destroy
+  has_one :photo, dependent: :destroy
 
   def self.ordered_by_name
     Artist.all.order(:name)
