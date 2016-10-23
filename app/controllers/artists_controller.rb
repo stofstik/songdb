@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :update]
+  before_action :set_artist, only: [:show]
 
   def index
     if params[:order_by] == 'created_at'
