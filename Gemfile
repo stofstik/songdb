@@ -43,6 +43,12 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'faker'
+end
+
+# TODO Why is this in a different group?
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do
