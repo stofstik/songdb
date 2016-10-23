@@ -17,7 +17,7 @@
 </div>
 
 <%= form_for Song.new do |f| %>
-    <%= f.text_field :name, placeholder: "Song name" %>
+    <%= f.text_field :name, placeholder: "Song name", autocomplete: 'off' %>
     <%= f.hidden_field :artist_id, value: @artist.id %>
 <% end %>
 
