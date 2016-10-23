@@ -1,9 +1,7 @@
 /*
- * Add a song to the database using an AJAX cal
+ * Add a song to the database using an AJAX call
  */
 function addSong() {
-    event.preventDefault();
-
     // Get data form our form
     var newSong = {
         name: $("#song_name").val(),
@@ -33,6 +31,7 @@ function addSong() {
         listItem.append(button);
         // Add it to our list
         $("#song-list").append(listItem);
+        $("#song_name").val(null);
     })
     .fail(function(error) {
         console.log(error);
@@ -58,7 +57,6 @@ function deleteSong(songId) {
  * Delete all songs by iterating, ideally we would have a custom method in our controller
  */
 function deleteAll() {
-    event.preventDefault();
     if (confirm("Are you sure you want to delete all songs?")) {
         // Use jQuery to iterate over each list-item
         $.each($(".list-item"), function(index, listItem) {
@@ -74,5 +72,14 @@ function deleteAll() {
  * Bind addSong to our form submit, we use regular onClick methods for the buttons
  */
 $(document).ready(function() {
-    $("form").bind('submit', addSong);
+    $("form").bind('submit', function(event) {
+        // jQuery is being weird, for some reason it fires addSong() twice when
+        // doing $('form').submit() in the console...
+        // event.preventDefault() and event.stopImmediatePropagation are doing
+        // anything against it when running in the browser console
+        // But they do fire when running feature tests with chromedriver! Dafuq?
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        addSong();
+    });
 });
